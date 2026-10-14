@@ -117,3 +117,5 @@ form.addEventListener("submit", async (e) => {
         setLoading(false);
     }
 });
+sessionStorage.setItem("resetEmail", emailInput.value);
+window.location.href = "Confirmation-state.html";
