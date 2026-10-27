@@ -1,0 +1,277 @@
+/* Page-specific styles for review.html.
+   Colours (--green, --border, etc.) come from styles.css. */
+
+   .crumb{ color:var(--muted); }
+
+   /* ===== Back link + green notice ===== */
+   .top-row{
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     flex-wrap:wrap;
+     gap:16px;
+     margin-bottom:20px;
+   }
+   .back{ font-weight:600; }
+   .notice{
+     margin:0;
+     max-width:420px;
+     background:#e3f1e7;
+     color:var(--green);
+     padding:12px 16px;
+     border-radius:8px;
+     font-size:13px;
+     font-weight:500;
+   }
+   
+   /* ===== Two columns ===== */
+   .review-grid{
+     display:grid;
+     grid-template-columns:1fr 340px;    /* wide left, fixed-width right */
+     gap:20px;
+     align-items:start;
+   }
+   .column{ display:flex; flex-direction:column; gap:20px; min-width:0; }
+   
+   /* ===== Cards ===== */
+   .card{
+     background:#fff;
+     border:1px solid var(--border);
+     border-radius:10px;
+     padding:22px;
+   }
+   .card h3{ margin:0 0 14px; font-size:15px; }
+   .muted{ color:var(--muted); }
+   .good{ color:var(--green); }
+   .small-text{ font-size:12px; margin:4px 0 0; }
+   
+   /* ===== Summary card ===== */
+   .summary{ display:flex; align-items:center; gap:30px; }
+   .summary h2{ margin:0 0 8px; font-size:20px; }
+   .summary p{ margin:6px 0 0; font-size:13px; }
+   .summary-img{
+    height: 143px;
+    width: 143px;
+   }
+   .status.pending i{ margin-right:4px; }
+   
+   /* ===== Photo placeholders: swap each one for <img src="..."> when you have photos ===== */
+   .photo{
+     background:#cfd6d0;
+     color:#fff;
+     display:grid;
+     place-items:center;
+     font-size:12px;
+     border-radius:8px;
+     position:relative;
+     overflow:hidden;
+   }
+   .photo img{ width:100%; height:100%; object-fit:cover; }
+   .photo.big{ width:96px; height:96px; border-radius:12px; flex:none; background:#8a7a5a; }
+   
+   /* ===== Applicant details: label on the left, value on the right ===== */
+   .detail{
+     display:flex;
+     justify-content:space-between;
+     gap:16px;
+     padding:14px 12px;
+     border-bottom:1px dashed var(--border);
+   }
+   .detail:last-child{ border-bottom:0; }
+   .detail span{ color:var(--muted); }
+   .detail strong{ text-align:right; }
+   
+   /* ===== Documents and portfolio photo grid ===== */
+   .photo-grid{ display:flex; flex-wrap:wrap; gap:14px; }
+   .photo-grid figure{ margin:0; }
+   .photo-grid figcaption{ font-size:11px; margin-top:6px; color:var(--text); }
+   .docs{width: 222px; height:155px;}
+   .work{ width:114px; height:114px; }
+   
+   
+   .bio-title{ margin-top:22px !important; padding-top:16px; border-top:1px solid var(--border); }
+   .bio{ font-size:12px; line-height:1.6; margin:0; }
+   
+   /* ===== Right column: status rows ===== */
+   .pending-text{ color:var(--orange); font-weight:600; margin:0; }
+   .check-row{
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     gap:10px;
+     padding:14px 0;
+     border-top:1px solid var(--border);
+     margin-top:14px;
+   }
+   .check-row p{ margin:4px 0 0; }
+   .tag-pill{
+     background:#e3f1e7;
+     color:var(--green);
+     font-size:11px;
+     padding:3px 10px;
+     border-radius:999px;
+     font-weight:500;
+   }
+   
+   /* ===== Admin action buttons ===== */
+   .action{
+     display:flex;
+     align-items:center;
+     gap:10px;
+     width:100%;
+     padding:12px 16px;
+     margin-bottom:10px;
+     background:#fff;
+     border:1px solid var(--border);
+     border-radius:8px;
+     color:var(--muted);
+     font-size:12px;
+     font-weight:500;
+     cursor:pointer;
+   }
+   .action:last-child{ margin-bottom:0; }
+   .action:hover{ background:#f3f5f3; }
+   
+   /* ===== Important box ===== */
+   .important{
+     background:#e3f1e7;
+     border-radius:10px;
+     padding:16px;
+     font-size:12px;
+   }
+   .important p{ margin:8px 0 0; line-height:1.5; }
+   
+   /* ===== Activity history ===== */
+   .history{ list-style:none; margin:0; padding:0; }
+   .history li{ padding:6px 0 6px 14px; position:relative; }
+   .history li::before{
+     content:"";
+     position:absolute;
+     left:0; top:13px;
+     width:6px; height:6px;
+     background:#c4cbc5;
+   }
+   .history span{ display:block; font-size:11px; margin-top:2px; }
+   
+   /* ===== Smaller screens: stack the two columns ===== */
+   @media (max-width:1000px){
+     .review-grid{ grid-template-columns:1fr; }
+   }
+   @media (max-width:560px){
+     .summary{ flex-direction:column; align-items:flex-start; }
+     .detail{ flex-direction:column; gap:4px; }
+     .detail strong{ text-align:left; }
+   }
+   
+   /* ================= Approve flow ================= */
+   
+   
+   .status.approved{ background:#e3f1e7; color:var(--green); }
+   .status.approved i{ margin-right:4px; }
+   
+   .toast{
+     margin:0 0 20px auto;
+     width:max-content;
+     max-width:100%;
+     background:#e3f1e7;
+     color:var(--green);
+     padding:12px 20px;
+     border-radius:8px;
+     font-size:13px;
+     font-weight:500;
+   }
+   
+   /* --- Approve panel inside Admin Actions (closed by default, .open shows it) --- */
+   .approve-option{ border:1px solid var(--border); border-radius:8px; margin-bottom:10px; }
+   .approve-option .action{ border:0; margin:0; background:none; }
+   .approve-option .action i{ color:#8a93a0; }
+   .approve-body{ display:none; padding:0 16px 14px 42px; }
+   .approve-option.open{ border-color:var(--green); background:#eef6f0; }
+   .approve-option.open .action{ color:var(--dark-green); font-weight:600; }
+   .approve-option.open .action i{ color:var(--dark-green); }
+   .approve-option.open .approve-body{ display:block; }
+   .approve-btn{
+     width:100%;
+     margin-top:10px;
+     padding:8px;
+     background:#fff;
+     border:1px solid var(--dark-green);
+     color:var(--dark-green);
+     border-radius:6px;
+     font-weight:600;
+     cursor:pointer;
+   }
+   .approve-btn:hover{ background:var(--dark-green); color:#fff; }
+   
+   /* --- Decision card and newest history item --- */
+   .decision-box{ background:#e3f1e7; border-radius:8px; padding:14px; margin-bottom:12px; font-size:12px; }
+   .decision-box p{ margin:6px 0 0; line-height:1.5; }
+   .action:disabled{ justify-content:center; cursor:default; }
+   .action:disabled:hover{ background:#fff; }
+   .history li.latest::before{ background:var(--text); border-radius:50%; }
+   
+   /* --- Popups: .overlay is the dark background, .modal is the white box --- */
+   .overlay{
+     position:fixed;
+     inset:0;
+     background:rgba(23,28,24,.55);
+     display:none;                       /* hidden until JS adds class "open" */
+     align-items:center;
+     justify-content:center;
+     padding:16px;
+     z-index:100;
+   }
+   .overlay.open{ display:flex; }
+   .modal{
+     position:relative;
+     background:#fff;
+     border-radius:16px;
+     width:min(480px, 100%);
+     max-height:100%;
+     overflow-y:auto;
+     padding:36px 32px 28px;
+     text-align:center;
+   }
+   .modal h2{ margin:16px 0 8px; font-size:24px; }
+   .modal-text{ color:var(--muted); font-size:13px; line-height:1.5; margin:0 0 18px; }
+   .modal-note{ color:var(--muted); font-size:12px; margin:0 0 20px; }
+   .modal-close{
+     position:absolute;
+     top:12px; right:18px;
+     background:none;
+     border:0;
+     font-size:28px;
+     color:var(--muted);
+     cursor:pointer;
+   }
+   .modal-icon{
+     width:64px; height:64px;
+     margin:0 auto;
+     border-radius:50%;
+     background:#e3f1e7;
+     color:var(--dark-green);
+     display:grid;
+     place-items:center;
+     font-size:24px;
+   }
+   .checklist{ list-style:none; margin:0 0 16px; padding:14px 18px; background:#e9f4ec; border-radius:10px; text-align:left; }
+   .checklist li{ display:flex; align-items:center; gap:10px; padding:6px 0; font-size:13px; }
+   .checklist li i{ color:var(--green); }
+   .checklist li span{ margin-left:auto; color:var(--green); font-weight:500; font-size:12px; }
+   .modal-buttons{ display:flex; gap:14px; }
+   .modal-buttons > *{ flex:1; }
+   .btn-outline, .btn-solid{
+     display:block;
+     padding:12px;
+     border-radius:8px;
+     font-size:13px;
+     font-weight:600;
+     text-align:center;
+     cursor:pointer;
+   }
+   .btn-outline{ background:#fff; color:var(--dark-green); border:1px solid var(--dark-green); }
+   .btn-solid{ background:var(--dark-green); color:#fff; border:1px solid var(--dark-green); }
+   .btn-solid:hover{ background:var(--light-green); }
+   .next{ text-align:left; border-top:1px solid var(--border); margin:18px 0 20px; padding-top:16px; font-size:13px; }
+   .next h4{ margin:0 0 6px; }
+   .next p{ margin:4px 0; color:var(--muted); }
