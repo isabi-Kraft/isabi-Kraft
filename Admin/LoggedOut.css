@@ -1,0 +1,62 @@
+/* LoggedOut.css: the "You Have Been Logged Out" page (standalone, no sidebar). */
+:root{
+    --dark-green:#26413a;
+    --light-green:#1f4a2e;
+    --green:#3f8f55;
+    --text:#1b1f1c;
+    --muted:#6b7770;
+    --border:#e4e8e5;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; font-family:"Inter", Arial, sans-serif; color:var(--text); background:#f7f8f7; }
+  
+  .split{ display:grid; grid-template-columns:minmax(0,2fr) minmax(0,5fr); min-height:100vh; }
+  
+  /* left green panel */
+  .side{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:48px 40px;
+    background:var(--dark-green);
+    color:#fff;
+  }
+  .side h1{ margin:0 0 14px; font-size:28px; font-weight:600; }
+  .side p{ margin:0; font-size:13px; color:#cdd9d3; }
+  
+  /* right side */
+  .right{ position:relative; display:flex; align-items:center; justify-content:center; padding:96px 40px 48px; }
+  .top-logo{ position:absolute; top:28px; right:40px; height:34px; width:auto; }
+  
+  .card{
+    width:min(560px, 100%);
+    padding:44px 40px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    text-align:center;
+  }
+  .tick{
+    display:grid; place-items:center;
+    width:78px; height:78px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#e3f1e7; color:var(--green);
+    font-size:30px;
+  }
+  .card h2{ margin:0 0 10px; font-size:26px; }
+  .card p{ margin:0 0 26px; font-size:13px; color:var(--muted); }
+  .btn-solid{
+    display:block; width:100%;
+    padding:13px 18px;
+    border-radius:8px;
+    background:var(--dark-green); color:#fff;
+    font-size:13px; font-weight:600; text-decoration:none;
+  }
+  .btn-solid:hover{ background:var(--light-green); }
+  
+  @media (max-width:760px){
+    .split{ grid-template-columns:minmax(0,1fr); }
+    .side{ padding:32px 24px; }
+    .right{ padding:72px 16px 32px; }
+    .top-logo{ top:20px; right:16px; height:28px; }
+    .card{ padding:32px 20px; }
+  }

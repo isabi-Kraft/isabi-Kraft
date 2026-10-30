@@ -1,0 +1,115 @@
+/* ReviewFlows.css: styles for the Reject and Request More Information flows.
+   Load it AFTER ArtisanReview.css on ArtisanReview.html, ArtisanRejected.html
+   and ArtisanInfoRequested.html. It only adds rules; it changes nothing that
+   already exists. Colours (--red, --orange, --border...) come from your
+   existing stylesheets. */
+
+/* ================= Reject Artisan ================= */
+
+/* --- Panel inside Admin Actions (same idea as .approve-option) --- */
+.reject-option{ border:1px solid var(--border); border-radius:8px; margin-bottom:10px; }
+.reject-option .action{ border:0; margin:0; background:none; }
+.reject-option .action i{ color:#8a93a0; }
+.reject-body{ display:none; padding:0 16px 14px 42px; }
+.reject-body p{ margin:0; font-size:11px; line-height:1.5; color:#b0524f; }
+.reject-option.open{ border-color:var(--red); background:#fdecec; }
+.reject-option.open .action{ color:var(--red); font-weight:600; }
+.reject-option.open .action i{ color:var(--red); }
+.reject-option.open .reject-body{ display:block; }
+.reject-btn{
+  width:100%;
+  margin-top:10px;
+  padding:8px;
+  background:#fff;
+  border:1px solid var(--red);
+  color:var(--red);
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+.reject-btn:hover{ background:var(--red); color:#fff; }
+
+/* --- Form popup (reuses .overlay and .modal from the Approve flow) --- */
+.modal--form{ text-align:left; }
+.modal--form h2{ margin:0 0 8px; }
+.modal-field{ margin:0 0 16px; }
+.modal-label{ display:block; margin:0 0 8px; font-size:14px; font-weight:600; }
+.modal-field select,
+.modal-field textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:#fff;
+  color:var(--text);
+  font-size:13px;
+  outline:none;
+}
+.modal-field select{ height:40px; padding:0 12px; }
+.modal-field textarea{ min-height:96px; padding:12px; resize:vertical; font-family:inherit; }
+.modal-field select:focus,
+.modal-field textarea:focus{ border-color:var(--orange); box-shadow:0 0 0 3px rgba(217,130,43,.15); }
+.modal-hint{ margin:-6px 0 16px; font-size:12px; color:var(--muted); }
+
+.btn-danger{
+  display:block;
+  padding:12px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+  background:var(--red);
+  color:#fff;
+  border:1px solid var(--red);
+  cursor:pointer;
+}
+.btn-danger:hover:not(:disabled){ filter:brightness(.92); }
+.btn-danger:disabled{ opacity:.4; cursor:not-allowed; }
+
+/* --- Success popup --- */
+.modal-icon.bad{ background:#fbe4e4; color:var(--red); }
+.btn-full{ width:100%; margin-top:6px; }
+
+/* --- Rejected page --- */
+.status.rejected{ background:#fde8e8; color:var(--red); }
+.toast.error{ background:#fde8e8; color:var(--red); }
+.tag-pill.bad{ background:#fde8e8; color:var(--red); }
+.decision-box.rejected{ background:#f8dcdc; color:#8f2d2d; }
+
+
+/* ================= Request More Information ================= */
+
+/* --- Panel inside Admin Actions --- */
+.info-option{ border:1px solid var(--border); border-radius:8px; margin-bottom:10px; }
+.info-option .action{ border:0; margin:0; background:none; }
+.info-option .action i{ color:#8a93a0; }
+.info-body{ display:none; padding:0 16px 14px 42px; }
+.info-body p{ margin:0; font-size:11px; line-height:1.5; color:#a8742f; }
+.info-option.open{ border-color:var(--orange); background:#fdf3e6; }
+.info-option.open .action{ color:var(--orange); font-weight:600; }
+.info-option.open .action i{ color:var(--orange); }
+.info-option.open .info-body{ display:block; }
+.info-btn{
+  width:100%;
+  margin-top:10px;
+  padding:8px;
+  background:#fff;
+  border:1px solid var(--orange);
+  color:var(--orange);
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+.info-btn:hover{ background:var(--orange); color:#fff; }
+
+/* --- Form popup: checklist of what is missing --- */
+.check-options{ list-style:none; margin:0 0 16px; padding:0; }
+.check-options label{ display:flex; align-items:center; gap:10px; padding:6px 0; font-size:13px; cursor:pointer; }
+.check-options input{ width:16px; height:16px; margin:0; accent-color:var(--dark-green); cursor:pointer; }
+#infoSubmit:disabled{ background:#86a394; border-color:#86a394; cursor:not-allowed; }
+
+/* --- Success popup --- */
+.modal-icon.warn{ background:#fdf0e1; color:var(--orange); }
+
+/* --- Information Requested page --- */
+.toast.warn{ background:#fdf0e1; color:var(--orange); }
+.decision-box.info{ background:#fdf0e1; color:#8a5a1d; }

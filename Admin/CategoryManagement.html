@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category Management | iSabiKraft Admin</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="LogoutModal.css">
+<link rel="stylesheet" href="CategoryManagement.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR  ===== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Images/ISabi Logo.png" alt="ISabiKraft Logo" class="brand-img">
+    </div>
+
+    <nav class="nav">
+        <a href="AdminDashboard.html"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+        <a href="VerificationQueue.html" ><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
+        <a href="Artisans.html"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+        <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+        <a href="Alljobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+        <a href="Disputes.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+        <a href="CategoryManagement.html" class="active"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+        <a href="Settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+
+    <a href="#" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+  </aside>
+
+  <!-- ===== RIGHT SIDE ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="topbar-title">Category Management</span>
+      <div class="topbar-right">
+        <i class="fa-regular fa-bell"></i>
+        <div class="profile">
+          <span class="profile-pic"><i class="fa-solid fa-user"></i></span>
+          <div class="profile-text"><strong>Chidinma</strong><small>Admin</small></div>
+          <i class="fa-solid fa-chevron-down small"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="content categories-page">
+
+      <div class="page-head">
+        <div>
+          <h1>Category Management</h1>
+          <p class="intro">Choose which services customers can select when they post a job.</p>
+        </div>
+        <button type="button" class="add-btn" id="addCategory">Add Category</button>
+      </div>
+
+      <!-- Three summary cards -->
+      <section class="c-stats">
+        <div class="c-stat">
+          <p class="c-title"><span class="badge slate"><i class="fa-solid fa-table-cells-large"></i></span> All Categories</p>
+          <p class="c-number" id="countAll">3</p>
+        </div>
+        <div class="c-stat">
+          <p class="c-title"><span class="badge green"><i class="fa-solid fa-circle-check"></i></span> Active</p>
+          <p class="c-number" id="countActive">2</p>
+        </div>
+        <div class="c-stat">
+          <p class="c-title"><span class="badge grey"><i class="fa-solid fa-circle-check"></i></span> Inactive</p>
+          <p class="c-number" id="countInactive">1</p>
+        </div>
+      </section>
+
+      <!-- Search, filters and the table -->
+      <section class="panel">
+
+        <div class="toolbar">
+          <label class="c-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="categorySearch" placeholder="Search by category ID or name..." aria-label="Search categories">
+          </label>
+
+          <div class="chips" id="categoryFilters" role="group" aria-label="Filter categories">
+            <button type="button" class="chip active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-filter="active" aria-pressed="false">Active</button>
+            <button type="button" class="chip" data-filter="inactive" aria-pressed="false">Inactive</button>
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table id="categoriesTable">
+            <thead>
+              <tr>
+                <th>Category ID</th>
+                <th>Category name</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr data-status="active">
+                <td class="c-id">JK-00124</td>
+                <td>Electrical</td>
+                <td><span class="pill active">Active</span></td>
+                <td class="actions"><button type="button" class="row-btn edit">Edit</button><button type="button" class="row-btn toggle">Deactivate</button></td>
+              </tr>
+              <tr data-status="active">
+                <td class="c-id">JK-00125</td>
+                <td>Plumbing</td>
+                <td><span class="pill active">Active</span></td>
+                <td class="actions"><button type="button" class="row-btn edit">Edit</button><button type="button" class="row-btn toggle">Deactivate</button></td>
+              </tr>
+              <tr data-status="inactive">
+                <td class="c-id">JK-00126</td>
+                <td>Carpentry</td>
+                <td><span class="pill inactive">Inactive</span></td>
+                <td class="actions"><button type="button" class="row-btn edit">Edit</button><button type="button" class="row-btn toggle">Activate</button></td>
+              </tr>
+              <tr class="empty-row" id="emptyRow" hidden>
+                <td colspan="4">No categories match your search or filter.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+    </main>
+  </div>
+</div>
+
+
+
+<!-- Add / Edit form -->
+<div class="overlay" id="formModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+    <button class="modal-close" id="formClose" type="button" aria-label="Close">&times;</button>
+    <h2 id="formTitle">Add Category</h2>
+    <p class="modal-text" id="formText">New categories are active right away.</p>
+    <div class="modal-field">
+      <label class="modal-label" for="categoryName">Category name</label>
+      <input type="text" id="categoryName" placeholder="For example, Painting..." autocomplete="off" maxlength="40">
+    </div>
+    <p class="modal-hint" id="formHint">Customers see this name when they post a job.</p>
+    <div class="modal-buttons">
+      <button class="btn-outline" id="formCancel" type="button">Cancel</button>
+      <button class="btn-solid" id="formSave" type="button" disabled>Add Category</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="confirmModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <h2 id="confirmTitle">Deactivate Electrical?</h2>
+    <p class="modal-text" id="confirmText"></p>
+    <div class="modal-buttons">
+      <button class="btn-outline" id="confirmCancel" type="button">Cancel</button>
+      <button class="btn-solid" id="confirmOk" type="button">Deactivate</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="doneModal">
+  <div class="modal modal--done" role="dialog" aria-modal="true" aria-labelledby="doneTitle">
+    <span class="done-icon"><i class="fa-solid fa-check"></i></span>
+    <h2 id="doneTitle">Category Updated</h2>
+    <p class="done-text" id="doneText"></p>
+    <span class="pill active" id="donePill">Active</span>
+    <hr>
+    <h3>What happens next?</h3>
+    <ul id="doneList"></ul>
+    <button class="btn-solid btn-wide" id="doneContinue" type="button">Continue</button>
+  </div>
+</div>
+
+<script src="CategoryManagement.js"></script>
+<script src="logout.js"></script>
+</body>
+</html>

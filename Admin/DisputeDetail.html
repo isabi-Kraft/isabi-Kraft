@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dispute DSP-0007 | iSabiKraft Admin</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="LogoutModal.css">
+<link rel="stylesheet" href="DisputeDetail.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Images/ISabi Logo.png" alt="ISabiKraft Logo" class="brand-img">
+    </div>
+
+    <nav class="nav">
+      <a href="AdminDashboard.html" ><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+      <a href="VerificationQueue.html" ><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
+      <a href="Artisans.html"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+      <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+      <a href="Alljobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+      <a href="Disputes.html" class="active"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+      <a href="CategoryManagement.html"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+      <a href="Settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+    </nav>
+
+    <a href="LoggedOut.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+  </aside>
+
+  <!-- ===== RIGHT SIDE ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="topbar-title"><a href="Disputes.html" class="crumb">Disputes</a> <i class="fa-solid fa-chevron-right small"></i> DSP-0007</span>
+      <div class="topbar-right">
+        <i class="fa-regular fa-bell"></i>
+        <div class="profile">
+          <span class="profile-pic"><i class="fa-solid fa-user"></i></span>
+          <div class="profile-text"><strong>Chidinma</strong><small>Admin</small></div>
+          <i class="fa-solid fa-chevron-down small"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="content dispute-page">
+
+      <div class="top-row">
+        <a href="Disputes.html" class="back"><i class="fa-solid fa-arrow-left"></i> Back to Disputes</a>
+        <p class="toast" id="toast" role="status" hidden></p>
+      </div>
+
+      <h1 class="crumb-heading"><a href="Disputes.html">Disputes</a> <i class="fa-solid fa-chevron-right"></i> DSP-0007</h1>
+      <h2 class="dispute-title">DSP-0007: Work left incomplete</h2>
+      <p class="raised-by">Raised by Okafor Chidinma (customer) against Tunde Adeyemi (artisan)</p>
+
+      <div class="dispute-grid">
+
+        <!-- ========== LEFT COLUMN ========== -->
+        <div class="column">
+
+          <section class="card">
+            <h3>Complaint</h3>
+            <div class="detail"><span>Issue Type</span><strong>Work left incomplete</strong></div>
+            <div class="detail"><span>Raised by</span><strong>Okafor Chidinma</strong></div>
+            <p class="complaint-text">Tunde left before finishing. The sockets in two bedrooms still do not work. He has not returned to complete the job.</p>
+
+        
+            <div class="photo-grid">
+              <figure><img src="Images/Bedroom Socket.png" alt="Bedroom socket"><figcaption>Bedroom Socket</figcaption></figure>
+              <figure><img src="Images/Open wiring.png" alt="Open wiring"><figcaption>Open wiring</figcaption></figure>
+              <figure><img src="Images/Second Bedroom Socket.png" alt="Second bedroom socket"><figcaption>Second Bedroom socket</figcaption></figure>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3>Linked Job</h3>
+            <div class="detail"><span>Job ID</span><a href="JobDetail.html" class="orange-link">JK-00124</a></div>
+            <div class="detail"><span>Trade / Category</span><strong>Electrical</strong></div>
+            <div class="detail"><span>Agreed Scope</span><strong>Rewire sockets in 3 rooms</strong></div>
+            <div class="detail"><span>Agreed Price</span><strong>&#8358;45,000</strong></div>
+            <div class="detail"><span>Date</span><strong>20 Oct 2026, 10:00 am</strong></div>
+            <div class="detail"><span>Job Status</span><span class="pill job-active">Active</span></div>
+            <p class="terms-note">Agreed terms cannot change without a recorded agreement from both parties.</p>
+          </section>
+
+          <section class="card notes-card">
+            <h3>Investigation Notes</h3>
+            <p class="muted small-text" id="noNotes">No investigation notes yet. Add your first note to start the review.</p>
+            <div id="notesList"></div>
+          </section>
+
+        </div>
+
+        <!-- ========== RIGHT COLUMN ========== -->
+        <div class="column">
+
+          <section class="card">
+            <h3>Status</h3>
+            <span class="pill open" id="disputeStatus">Open</span>
+
+            <div id="noteArea">
+              <label class="note-label" for="noteBox">Add investigation note</label>
+              <textarea id="noteBox" placeholder="What did you find or do?"></textarea>
+              <button class="btn-outline btn-block" id="saveNote" type="button" disabled>Save note and move to In Review</button>
+              <p class="status-note" id="stateNote">You can resolve the dispute after it is in review.</p>
+            </div>
+
+           
+            <button class="btn-solid btn-block" id="openResolve" type="button" hidden>Resolve Dispute</button>
+
+            <div class="resolution-box" id="resolutionBox" hidden>
+              <strong>Resolved by Chidinma</strong>
+              <p id="resolutionText"></p>
+            </div>
+            <button class="btn-outline btn-block" id="caseClosed" type="button" disabled hidden>Case Closed</button>
+          </section>
+
+          <section class="card">
+            <h3>Activity history</h3>
+            <ul class="history" id="activityList">
+              <li class="latest"><strong>Dispute raised by Okafor Chidinma</strong><span class="muted">20 Oct 2026, 11:20</span></li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+<div class="overlay" id="resolveModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resolveTitle">
+    <button class="modal-close" id="resolveClose" type="button" aria-label="Close">&times;</button>
+    <h2 id="resolveTitle">Resolve this dispute?</h2>
+    <p class="modal-text">Okafor Chidinma and Tunde Adeyemi will both be told the outcome. This closes the case.</p>
+
+    <div class="modal-field">
+      <label class="modal-label" for="actionTaken">Action Taken</label>
+      <select id="actionTaken">
+        <option value="" selected disabled>Select an action</option>
+        <option>Artisan to complete the work</option>
+        <option>Partial refund to customer</option>
+        <option>Job cancelled by agreement</option>
+        <option>No action needed</option>
+      </select>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="resolutionNote">Note to artisan</label>
+      <textarea id="resolutionNote" placeholder="Explain the decision and what happens next"></textarea>
+    </div>
+
+    <p class="modal-hint">An action and a resolution note are required.</p>
+
+    <div class="modal-buttons">
+      <button class="btn-outline" id="resolveCancel" type="button">Cancel</button>
+      <button class="btn-solid" id="resolveSave" type="button" disabled>Resolve Dispute</button>
+    </div>
+  </div>
+</div>
+
+<script src="DisputeDetail.js"></script>
+<script src="Logout.js"></script>
+
+</body>
+</html>

@@ -6,8 +6,8 @@
 <title>Information Requested | iSabiKraft Admin</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- styles.css = sidebar, top bar and shared look. review.css = only this page. -->
 <link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="LogoutModal.css">
 <link rel="stylesheet" href="ArtisanReview.css">
 <link rel="stylesheet" href="ReviewFlows.css">
 </head>
@@ -15,24 +15,22 @@
 
 <div class="app">
 
-  <!-- ===== LEFT SIDEBAR (same as the queue page) ===== -->
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="brand">
         <img src="Images/ISabi Logo.png">
     </div>
     <nav class="nav">
-      <a href="#"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+      <a href="AdminDashboard.html" ><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
       <a href="VerificationQueue.html" class="active"><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
-      <a href="#"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+      <a href="Artisans.html"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
       <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
-      <a href="#"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
-      <a href="#"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
-      <a href="#"><i class="fa-solid fa-chart-bar"></i><span>Reports</span></a>
-      <a href="#"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
-      <a href="#"><i class="fa-solid fa-user-gear"></i><span>User Management</span></a>
-      <a href="#"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      <a href="Alljobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+      <a href="Disputes.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+      <a href="CategoryManagement.html"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+      <a href="Settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
     </nav>
-    <a href="#" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+    <a href="LoggedOut.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
   </aside>
 
   <div class="main">
@@ -55,7 +53,7 @@
 
       <p class="toast warn" id="iToast">Request sent. Waiting for Tunde to resubmit.</p>
 
-      <!-- Two columns: details on the left, decisions on the right -->
+     
       <div class="review-grid">
 
         <!-- ========== LEFT COLUMN ========== -->
@@ -72,7 +70,7 @@
             </div>
           </section>
 
-          <!-- Applicant details: one row per detail -->
+          <!-- Applicant details: -->
           <section class="card">
             <h3>Applicant details</h3>
             <div class="detail"><span>Full Name</span><strong>Tunde Adeyemi</strong></div>
@@ -162,5 +160,6 @@
 </div>
 
 <script src="ReviewFlows.js"></script>
+<script src="Logout.js"></script>
 </body>
 </html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artisan | iSabiKraft Admin</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="ArtisanDetail.css">
+<link rel="stylesheet" href="LogoutModal.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Images/ISabi Logo.png" alt="ISabiKraft Logo" class="brand-img">
+    </div>
+
+    <nav class="nav">
+      <a href="AdminDashboard.html"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+      <a href="VerificationQueue.html"><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
+      <a href="Artisans.html" class="active"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+      <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+      <a href="AllJobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+      <a href="Disputes.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+      <a href="CategoryManagement.html"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+      <a href="Settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+    </nav>
+
+    <a href="LoggedOut.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+  </aside>
+
+  <!-- ===== RIGHT SIDE ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="topbar-title"><a href="Artisans.html" class="crumb">Artisans</a> <i class="fa-solid fa-chevron-right small"></i> <span id="crumbName">Artisan</span></span>
+      <div class="topbar-right">
+        <i class="fa-regular fa-bell"></i>
+        <div class="profile">
+          <span class="profile-pic"><i class="fa-solid fa-user"></i></span>
+          <div class="profile-text"><strong>Chidinma</strong><small>Admin</small></div>
+          <i class="fa-solid fa-chevron-down small"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="content artisan-page">
+
+      <a href="Artisans.html" class="back"><i class="fa-solid fa-arrow-left"></i> Back to Artisans</a>
+
+      <div class="a-grid">
+
+        <!-- ===== LEFT COLUMN ===== -->
+        <div class="col">
+
+          <section class="box">
+            <div class="who-row">
+              <img class="photo" id="profilePhoto" alt="">
+              <div>
+                <h1 id="aName"></h1>
+                <p class="sub"><span id="aId"></span> &bull; <span id="aTrade"></span></p>
+              </div>
+            </div>
+            <span class="pill" id="aPill"></span>
+
+            <dl class="facts">
+              <div><dt>Service area</dt><dd id="aArea"></dd></div>
+              <div><dt>Phone No</dt><dd>+234 000 000 0000</dd></div>
+              <div><dt>Email</dt><dd id="aEmail"></dd></div>
+              <div><dt>Joined</dt><dd>18 Oct 2026</dd></div>
+            </dl>
+            <p class="fine">This profile is view-only. Only details needed to review jobs and verification are shown.</p>
+          </section>
+
+          <section class="box">
+            <h2>Skills</h2>
+            <div class="tags" id="aSkills"></div>
+          </section>
+
+          <section class="box">
+            <h2>Summary</h2>
+            <div class="tiles">
+              <div class="tile"><strong id="sTotal">0</strong><span>Total jobs</span></div>
+              <div class="tile"><strong id="sDone">0</strong><span>Completed</span></div>
+              <div class="tile"><strong id="sDisp">0</strong><span>Disputes</span></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ===== RIGHT COLUMN ===== -->
+        <div class="col">
+
+          <section class="box">
+            <h2>Verification record</h2>
+            <p class="record" id="recordMsg"></p>
+            <div id="recordAction" hidden>
+              <a href="VerificationQueue.html" class="btn-solid">Open in Verification Queue</a>
+              <p class="fine">Decisions are made on the verification review screen.</p>
+            </div>
+          </section>
+
+          <section class="box">
+            <h2>Submitted evidence</h2>
+            <p class="ev-label">NIN Slip <small>(front &amp; back)</small></p>
+            <div class="ev-row">
+              <img class="ev nin" id="ninFront" alt="NIN slip front">
+              <img class="ev nin" id="ninBack" alt="NIN slip back">
+            </div>
+            <p class="ev-label">Selfie verification</p>
+            <div class="ev-row"><img class="ev selfie" id="selfie" alt="Selfie"></div>
+            <p class="ev-label">Portfolio</p>
+            <div class="ev-row" id="portfolio"></div>
+          </section>
+
+          <section class="box">
+            <h2>Job history</h2>
+            <div id="jobsEmpty" class="empty" hidden>
+              <strong>No jobs yet</strong>
+              <span>Jobs appear here after the artisan is approved.</span>
+            </div>
+            <div class="table-scroll" id="jobsWrap" hidden>
+              <table class="mini">
+                <thead><tr><th>Job ID</th><th>Category</th><th>Customer</th><th>Agreed price</th><th>Date</th><th>Status</th></tr></thead>
+                <tbody id="jobsBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="box">
+            <h2>Disputes against this artisan</h2>
+            <div id="dispEmpty" class="empty" hidden>
+              <strong>No disputes</strong>
+              <span>No disputes have been raised against this artisan.</span>
+            </div>
+            <div class="table-scroll" id="dispWrap" hidden>
+              <table class="mini">
+                <thead><tr><th>Dispute ID</th><th>Job</th><th>Issue</th><th>Status</th></tr></thead>
+                <tbody id="dispBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="ArtisanDetail.js"></script>
+<script src="Logout.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/* DisputeDetail.css: only what is specific to the dispute detail page and its popup.
+   The sidebar, top bar and base look come from VerificationQueue.css, so load
+   that first. Colours (--dark-green, --green, --orange, --red, --border,
+   --muted ...) are defined there. */
+
+   .crumb{ color:var(--muted); }
+
+   /* ===== Top row: back link left, confirmation message right ===== */
+   .top-row{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; min-height:40px; margin-bottom:8px; }
+   .back{ display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:14px; }
+   .toast{
+     margin:0;
+     padding:12px 22px;
+     border-radius:10px;
+     background:#e3f1e7;
+     color:#2f5d44;
+     font-size:13px;
+     font-weight:500;
+   }
+   .toast[hidden]{ display:none; }
+   
+   /* ===== Headings ===== */
+   .crumb-heading{ margin:0 0 14px; font-size:26px; font-weight:700; }
+   .crumb-heading a{ color:var(--orange); }
+   .crumb-heading i{ margin:0 8px; font-size:12px; color:var(--muted); vertical-align:middle; }
+   .dispute-title{ margin:0 0 6px; font-size:22px; font-weight:600; }
+   .raised-by{ margin:0 0 22px; font-size:13px; font-weight:500; color:var(--muted); }
+   
+   /* ===== Two columns: details left, status right ===== */
+   .dispute-grid{ display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:16px; align-items:start; }
+   .column{ display:flex; flex-direction:column; gap:16px; min-width:0; }
+   
+   .card{
+     background:#fff;
+     border:1px solid var(--border);
+     border-radius:10px;
+     padding:22px;
+   }
+   .card h3{ margin:0 0 14px; font-size:15px; }
+   .muted{ color:var(--muted); }
+   .small-text{ margin:0; font-size:12px; }
+   
+   /* ===== One row per detail: label left, value right ===== */
+   .detail{
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     gap:16px;
+     padding:14px 12px;
+     border-bottom:1px dashed var(--border);
+     font-size:13px;
+   }
+   .detail:last-of-type{ border-bottom:0; }
+   .detail span{ color:var(--muted); }
+   .detail strong{ text-align:right; }
+   .detail span.pill{ color:inherit; }
+   .orange-link{ font-weight:600; color:var(--orange); text-decoration:underline; }
+   .terms-note{ margin:4px 12px 0; padding-top:12px; border-top:1px solid var(--border); font-size:12px; line-height:1.5; color:var(--muted); }
+   
+   /* ===== Complaint text and photos ===== */
+   .complaint-text{
+     margin:14px 12px;
+     padding:14px 26px;
+     border-radius:8px;
+     background:#eef0f3;
+     font-size:13px;
+     line-height:1.5;
+     color:#4d5a52;
+   }
+   .photo-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; margin:0 12px; }
+   .photo-grid figure{ margin:0; padding:3px; border:1px solid var(--border); border-radius:8px; background:#fff; }
+   .photo-grid img{ display:block; width:100%; aspect-ratio:16 / 10; object-fit:cover; border-radius:6px; background:#d9dedb; }
+   .photo-grid figcaption{ margin:6px 4px 3px; font-size:10px; font-weight:600; color:var(--muted); }
+   
+   /* ===== Pills ===== */
+   .pill{
+     display:inline-block;
+     padding:4px 14px;
+     border-radius:999px;
+     font-size:12px;
+     font-weight:500;
+   }
+   .pill.open{ background:#fde8e8; color:var(--red); }
+   .pill.review{ background:#fdf0e1; color:var(--orange); }
+   .pill.resolved{ background:#e3f1e7; color:var(--green); }
+   .pill.job-active{ background:#fdf0e1; color:var(--orange); }
+   
+   /* ===== Investigation notes ===== */
+   .note{
+     margin-top:14px;
+     padding-left:12px;
+     border-left:2px solid var(--dark-green);
+   }
+   .note-meta{ display:block; font-size:11px; color:var(--muted); }
+   .note-text{ margin:4px 0 0; font-size:13px; line-height:1.45; white-space:pre-wrap; }
+   
+   /* ===== Status card ===== */
+   .note-label{ display:block; margin:16px 0 8px; font-size:13px; font-weight:600; }
+   .status-card textarea, #noteBox{
+     display:block;
+     width:100%;
+     min-height:84px;
+     padding:12px;
+     border:1px solid var(--border);
+     border-radius:8px;
+     background:#fff;
+     color:var(--text);
+     font-family:inherit;
+     font-size:13px;
+     resize:vertical;
+     outline:none;
+   }
+   #noteBox:focus{ border-color:var(--orange); box-shadow:0 0 0 3px rgba(217,130,43,.15); }
+   .btn-block{ display:block; width:100%; margin-top:12px; }
+   .status-note{ margin:10px 0 0; font-size:11px; line-height:1.5; color:var(--muted); }
+   .btn-block[hidden], .resolution-box[hidden]{ display:none; }
+   
+   .resolution-box{
+     margin-top:14px;
+     padding:14px;
+     border-radius:8px;
+     background:#e8f1ec;
+     color:#2f5d44;
+     font-size:12px;
+   }
+   .resolution-box strong{ font-size:14px; color:var(--text); }
+   .resolution-box p{ margin:8px 0 0; line-height:1.5; }
+   
+   /* ===== Activity history ===== */
+   .history{ list-style:none; margin:0; padding:0; }
+   .history li{ padding:7px 0 7px 16px; position:relative; font-size:13px; }
+   .history li::before{
+     content:"";
+     position:absolute;
+     left:0; top:15px;
+     width:7px; height:7px;
+     border-radius:50%;
+     background:#c4cbc5;
+   }
+   .history li.latest::before{ background:var(--dark-green); }
+   .history li.done::before{ background:var(--dark-green); }
+   .history strong{ font-weight:600; }
+   .history span{ display:block; margin-top:3px; font-size:11px; }
+   
+   /* ===== Buttons ===== */
+   .btn-solid, .btn-outline{
+     padding:12px;
+     border-radius:8px;
+     font-size:13px;
+     font-weight:600;
+     text-align:center;
+     cursor:pointer;
+   }
+   .btn-solid{ background:var(--dark-green); color:#fff; border:1px solid var(--dark-green); }
+   .btn-solid:hover:not(:disabled){ background:var(--light-green); }
+   .btn-solid:disabled{ background:#9cb3a6; border-color:#9cb3a6; cursor:not-allowed; }
+   .btn-outline{ background:#fff; color:var(--text); border:1px solid #cfd6d1; }
+   .btn-outline:hover:not(:disabled){ background:#f3f5f3; }
+   .btn-outline:disabled{ color:#9aa5a0; border-color:var(--border); cursor:not-allowed; }
+   
+   /* ===== Popup: .overlay is the dark background, .modal is the white box ===== */
+   .overlay{
+     position:fixed;
+     inset:0;
+     background:rgba(23,28,24,.55);
+     display:none;                        /* hidden until JS adds class "open" */
+     align-items:center;
+     justify-content:center;
+     padding:16px;
+     z-index:100;
+   }
+   .overlay.open{ display:flex; }
+   .modal{
+     position:relative;
+     background:#fff;
+     border-radius:16px;
+     width:min(580px, 100%);
+     max-height:100%;
+     overflow-y:auto;
+     padding:36px 32px 28px;
+     text-align:left;
+   }
+   .modal h2{ margin:0 0 8px; padding-right:36px; font-size:26px; }
+   .modal-text{ margin:0 0 20px; color:var(--muted); font-size:13px; line-height:1.5; }
+   .modal-close{
+     position:absolute;
+     top:12px; right:18px;
+     background:none;
+     border:0;
+     font-size:28px;
+     color:var(--muted);
+     cursor:pointer;
+   }
+   .modal-field{ margin:0 0 18px; }
+   .modal-label{ display:block; margin:0 0 8px; font-size:14px; font-weight:600; }
+   .modal-field select,
+   .modal-field textarea{
+     width:100%;
+     border:1px solid var(--border);
+     border-radius:6px;
+     background:#fafafa;
+     color:var(--text);
+     font-size:13px;
+     outline:none;
+   }
+   .modal-field select{ height:40px; padding:0 12px; }
+   .modal-field textarea{ min-height:100px; padding:12px; resize:vertical; font-family:inherit; }
+   .modal-field select:focus,
+   .modal-field textarea:focus{ border-color:var(--orange); box-shadow:0 0 0 3px rgba(217,130,43,.15); }
+   .modal-hint{ margin:-6px 0 18px; font-size:12px; color:var(--muted); }
+   .modal-buttons{ display:flex; gap:14px; }
+   .modal-buttons > *{ flex:1; }
+   
+   /* ===== Smaller screens ===== */
+   @media (max-width:1000px){
+     .dispute-grid{ grid-template-columns:minmax(0,1fr); }
+   }
+   @media (max-width:560px){
+     .detail{ flex-direction:column; align-items:flex-start; gap:4px; }
+     .detail strong{ text-align:left; }
+     .complaint-text{ padding:14px 16px; }
+     .photo-grid{ grid-template-columns:minmax(0,1fr); }
+     .modal{ padding:32px 20px 22px; }
+     .crumb-heading{ font-size:22px; }
+   }

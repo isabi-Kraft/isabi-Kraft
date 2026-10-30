@@ -1,0 +1,224 @@
+/* CategoryManagement.css: only what is specific to the Category Management page.
+   The sidebar, top bar, .badge and the base table styles come from
+   VerificationQueue.css, so load that first. Colours (--dark-green, --green,
+   --border, --muted ...) are defined there. */
+
+/* ===== Heading row: title left, Add Category right ===== */
+.page-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+.categories-page .intro{ margin:0; }
+.add-btn{
+  padding:10px 16px;
+  border:0;
+  border-radius:8px;
+  background:var(--dark-green);
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+}
+.add-btn:hover{ background:var(--light-green); }
+
+/* ===== Three summary cards ===== */
+.c-stats{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px;
+  margin-bottom:20px;
+}
+.c-stat{
+  min-height:140px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px 24px;
+}
+.c-title{ display:flex; align-items:center; gap:10px; margin:0; font-size:14px; color:var(--muted); }
+.c-number{ margin:14px 0 0; font-size:28px; font-weight:700; }
+.badge.slate{ background:#eceff1; color:#5d6a78; }
+.badge.green{ background:#e3f1e7; color:var(--green); }
+.badge.grey{ background:#e8eaee; color:#5d6a78; }
+
+/* ===== The white panel holding search, chips and table ===== */
+.panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px 24px 26px;
+}
+.toolbar{ display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:20px; }
+.c-search{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 1 480px;
+  min-width:240px;
+  height:38px;
+  padding:0 14px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#f1f2f4;
+  color:var(--muted);
+  font-size:13px;
+}
+.c-search input{ flex:1; min-width:0; border:0; outline:0; background:none; font-size:13px; }
+.c-search:focus-within{ border-color:var(--dark-green); background:#fff; }
+
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  padding:6px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+  color:var(--text);
+  font-size:12px;
+  font-weight:500;
+  cursor:pointer;
+}
+.chip:hover{ background:#f3f5f3; }
+.chip.active{ background:var(--dark-green); border-color:var(--dark-green); color:#fff; }
+
+/* ===== The table ===== */
+.categories-page .table-scroll{ position:relative; }
+.categories-page table{ min-width:560px; }
+.categories-page th{
+  padding:18px 14px;
+  background:#f6f7f6;
+  font-size:13px;
+  font-weight:500;
+  color:#4d5a52;
+}
+.categories-page td{ padding:20px 14px; font-size:13px; color:#58655d; vertical-align:middle; }
+.categories-page td.c-id{ font-weight:600; color:var(--text); white-space:nowrap; }
+
+.pill{
+  display:inline-block;
+  padding:5px 16px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:500;
+}
+.pill.active{ background:#e3ebe6; color:#2f5d44; }
+.pill.inactive{ background:#e8eaee; color:#5d6a78; }
+
+.actions{ white-space:nowrap; }
+.row-btn{
+  padding:7px 14px;
+  border:1px solid #d9dedb;
+  border-radius:8px;
+  background:#fff;
+  color:var(--text);
+  font-size:12px;
+  font-weight:500;
+  cursor:pointer;
+}
+.row-btn + .row-btn{ margin-left:10px; }
+.row-btn:hover{ background:#f3f5f3; }
+
+/* --- shown when search/filter finds nothing --- */
+.empty-row td{ padding:32px 14px; text-align:center; color:var(--muted); }
+.empty-row[hidden]{ display:none; }
+
+/* ===== Smaller screens ===== */
+@media (max-width:900px){
+  .c-stats{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+@media (max-width:560px){
+  .c-stats{ grid-template-columns:minmax(0,1fr); }
+  .c-stat{ min-height:0; }
+  .c-search{ flex:1 1 100%; }
+  .panel{ padding:18px 14px 20px; }
+}
+
+/* ===== Buttons used inside the popups ===== */
+.btn-solid, .btn-outline{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn-solid{ background:var(--dark-green); color:#fff; border:1px solid var(--dark-green); }
+.btn-solid:hover:not(:disabled){ background:var(--light-green); }
+.btn-solid:disabled{ background:#9cb3a6; border-color:#9cb3a6; cursor:not-allowed; }
+.btn-solid.danger{ background:var(--red); border-color:var(--red); }
+.btn-solid.danger:hover:not(:disabled){ background:#b83232; }
+.btn-outline{ background:#fff; color:var(--text); border:1px solid #cfd6d1; }
+.btn-outline:hover{ background:#f3f5f3; }
+.btn-wide{ width:100%; }
+
+/* ===== Popup: .overlay is the dark background, .modal is the white box ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(23,28,24,.55);
+  display:none;                        /* hidden until JS adds class "open" */
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  z-index:100;
+}
+.overlay.open{ display:flex; }
+.modal{
+  position:relative;
+  background:#fff;
+  border-radius:16px;
+  width:min(560px, 100%);
+  max-height:100%;
+  overflow-y:auto;
+  padding:36px 32px 28px;
+  text-align:left;
+}
+.modal h2{ margin:0 0 8px; padding-right:36px; font-size:26px; }
+.modal-text{ margin:0 0 20px; color:var(--muted); font-size:13px; line-height:1.5; }
+.modal-close{
+  position:absolute;
+  top:12px; right:18px;
+  background:none;
+  border:0;
+  font-size:28px;
+  color:var(--muted);
+  cursor:pointer;
+}
+.modal-field{ margin:0 0 10px; }
+.modal-label{ display:block; margin:0 0 8px; font-size:14px; font-weight:600; }
+.modal-field input{
+  width:100%;
+  height:42px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:#fafafa;
+  color:var(--text);
+  font-size:13px;
+  font-family:inherit;
+  outline:none;
+}
+.modal-field input:focus{ border-color:var(--orange); box-shadow:0 0 0 3px rgba(217,130,43,.15); }
+.modal-field.error input{ border-color:var(--red); }
+.modal-hint{ margin:0 0 20px; font-size:12px; color:var(--muted); }
+.modal-hint.error{ color:var(--red); }
+.modal-buttons{ display:flex; gap:14px; }
+.modal-buttons > *{ flex:1; }
+
+/* --- success popup --- */
+.modal--done{ text-align:center; }
+.modal--done h2{ padding-right:0; margin-bottom:10px; }
+.done-icon{
+  display:grid;
+  place-items:center;
+  width:78px; height:78px;
+  margin:0 auto 14px;
+  border-radius:50%;
+  background:#e3f1e7;
+  color:var(--green);
+  font-size:30px;
+}
+.done-text{ margin:0 0 14px; color:var(--muted); font-size:14px; }
+.modal--done hr{ border:0; border-top:1px solid var(--border); margin:20px 0; }
+.modal--done h3{ margin:0 0 6px; font-size:15px; text-align:left; }
+.modal--done ul{ margin:0 0 22px; padding:0; list-style:none; text-align:left; color:var(--muted); font-size:13px; line-height:1.9; }
+
+@media (max-width:560px){
+  .modal{ padding:32px 20px 22px; }
+}

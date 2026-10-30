@@ -1,0 +1,179 @@
+/* AdminDashboard.css: only what is specific to the dashboard page.
+   The sidebar, top bar, summary cards (.stat, .badge, .trend) and table base
+   come from VerificationQueue.css, so load that first. Sizes follow the same
+   scale as your other admin pages. Colours (--dark-green, --green, --orange,
+   --red, --border, --muted ...) are the ones defined in VerificationQueue.css. */
+
+/* ===== Top bar: search box ===== */
+.top-search{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:280px;
+  height:36px;
+  padding:0 14px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#fff;
+  color:var(--muted);
+  font-size:14px;
+}
+.top-search i{ font-size:14px; }
+.top-search input{ flex:1; min-width:0; border:0; outline:0; background:none; font-size:14px; }
+.top-search:focus-within{ border-color:var(--dark-green); }
+
+/* ===== Summary cards: always 4 across on a wide screen ===== */
+.dash .stats{ grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; }
+.badge.slate{ background:#eaf0ec; color:#3b5a47; }
+.trend.warn{ color:var(--orange); }
+
+/* ===== Cards ===== */
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+}
+.card h2{ margin:0; font-size:16px; font-weight:600; }
+.card-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+
+/* ===== Chart + donut side by side ===== */
+.dash-grid{
+  display:grid;
+  grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);
+  gap:14px;
+  margin-bottom:14px;
+}
+
+/* --- 7 / 30 / 90 days buttons --- */
+.range{ display:flex; gap:6px; }
+.range-btn{
+  padding:6px 12px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:#fff;
+  color:var(--muted);
+  font-size:13px;
+  cursor:pointer;
+}
+.range-btn:hover{ background:#f3f5f3; }
+.range-btn.active{ background:var(--dark-green); border-color:var(--dark-green); color:#fff; }
+
+/* --- legend above the chart --- */
+.legend-inline{ display:flex; justify-content:flex-end; gap:18px; margin:10px 0 6px; font-size:11px; color:var(--muted); }
+.legend-inline span{ display:inline-flex; align-items:center; gap:6px; }
+.dot{ display:inline-block; width:8px; height:8px; border-radius:50%; flex:none; }
+.dot.created{ background:var(--dark-green); }
+.dot.completed{ background:#4a9d52; }
+
+/* --- the drawn chart (dashboard.js fills .chart with an <svg>) --- */
+.chart svg{ display:block; width:100%; height:auto; }
+.chart .grid{ stroke:#e6e9e5; stroke-width:1; stroke-dasharray:2 3; }
+.chart .axis-label{ fill:#6b7a70; font-size:11px; font-family:inherit; }
+.chart .line{ fill:none; stroke-width:1.8; }
+.chart .line-created{ stroke:var(--dark-green); }
+.chart .line-completed{ stroke:#4a9d52; }
+.chart .point{ fill:#fff; stroke-width:1.4; }
+.chart .point.created{ stroke:var(--dark-green); }
+.chart .point.completed{ stroke:#4a9d52; }
+
+/* ===== Jobs by Category ===== */
+.category-body{ display:flex; align-items:center; gap:22px; margin-top:22px; flex-wrap:wrap; }
+.donut{ position:relative; width:140px; height:140px; flex:none; }
+.donut svg{ display:block; width:100%; height:100%; }
+.donut-centre{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+}
+.donut-centre strong{ font-size:22px; line-height:1.1; }
+.donut-centre span{ font-size:11px; color:var(--muted); }
+
+.cat-legend{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px; }
+.cat-legend li{ display:flex; align-items:flex-start; gap:8px; }
+.cat-legend .dot{ margin-top:4px; }
+.cat-legend strong{ display:block; font-size:13px; font-weight:600; color:#3e4a42; }
+.cat-legend small{ display:block; margin-top:3px; font-size:11px; color:var(--muted); }
+
+/* ===== Ongoing Jobs ===== */
+.jobs{ padding:20px 20px 12px; }
+.view-all{ font-size:13px; font-weight:500; color:var(--dark-green); }
+.view-all i{ margin-left:4px; font-size:10px; }
+.view-all:hover{ text-decoration:underline; }
+
+.jobs .table-scroll{ position:relative; margin-top:16px; }
+.jobs table{ min-width:780px; }
+.jobs th{ padding:14px 12px; font-size:13px; font-weight:500; }
+.jobs th:first-child{ border-radius:8px 0 0 8px; }
+.jobs th:last-child{ border-radius:0 8px 8px 0; }
+.jobs td{ padding:12px; font-size:13px; color:#58655d; }
+
+.job-id{
+  display:inline-block;
+  padding:5px 14px;
+  border-radius:999px;
+  background:#eceff3;
+  color:#5d6a78;
+  font-size:12px;
+  font-weight:500;
+  white-space:nowrap;
+}
+.who{ display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
+.avatar{
+  display:grid;
+  place-items:center;
+  width:24px; height:24px;
+  border-radius:50%;
+  object-fit:cover;
+  color:#fff;
+  font-size:9px;
+  font-weight:600;
+  flex:none;
+}
+.when{ white-space:nowrap; font-size:12px; }
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:500;
+  white-space:nowrap;
+}
+.pill::before{ content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.pill.completed::before{ display:none; }
+.pill i{ font-size:10px; }
+.pill.progress{ background:#e3f1e7; color:#2f6b43; }
+.pill.pending{ background:#fdf0e1; color:var(--orange); }
+.pill.dispute{ background:#fde8e8; color:var(--red); }
+.pill.completed{ background:#e3f1e7; color:var(--green); }
+
+.more{
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:15px;
+  cursor:pointer;
+  padding:4px 8px;
+  border-radius:6px;
+}
+.more:hover{ background:#f3f5f3; }
+
+/* visually hidden text for screen readers (the empty actions column header) */
+.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* ===== Smaller screens ===== */
+@media (max-width:1150px){
+  .dash .stats{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+@media (max-width:900px){
+  .dash-grid{ grid-template-columns:minmax(0,1fr); }
+  .top-search{ display:none; }
+}
+@media (max-width:560px){
+  .dash .stats{ grid-template-columns:minmax(0,1fr); }
+  .range{ width:100%; }
+  .category-body{ justify-content:center; }
+}

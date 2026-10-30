@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings | iSabiKraft Admin</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="Settings.css">
+<link rel="stylesheet" href="LogoutModal.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Images/ISabi Logo.png" alt="ISabiKraft Logo" class="brand-img">
+    </div>
+
+    <nav class="nav">
+      <a href="AdminDashboard.html"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+      <a href="VerificationQueue.html"><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
+      <a href="Artisans.html"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+      <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+      <a href="AllJobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+      <a href="Disputes.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+      <a href="CategoryManagement.html"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+      <a href="Settings.html" class="active"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+    </nav>
+
+    <a href="#" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+  </aside>
+
+  <!-- ===== RIGHT SIDE ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="topbar-title">Settings</span>
+      <div class="topbar-right">
+        <i class="fa-regular fa-bell"></i>
+        <div class="profile">
+          <span class="profile-pic"><i class="fa-solid fa-user"></i></span>
+          <div class="profile-text"><strong>Chidinma</strong><small>Admin</small></div>
+          <i class="fa-solid fa-chevron-down small"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="content settings-page">
+      <h1>Settings</h1>
+      <p class="intro">Manage your admin account.</p>
+
+      <!-- Profile -->
+      <section class="card">
+        <h2>Your Profile</h2>
+        <p class="card-sub">These details identify you in the activity history.</p>
+
+        <div class="me">
+          <span class="me-avatar">C</span>
+          <div><strong>Chidinma</strong><small>Admin</small></div>
+        </div>
+
+        <dl class="facts">
+          <div><dt>Full Name</dt><dd>Chidinma</dd></div>
+          <div><dt>Email</dt><dd>Chidinma@iSabiKraft.com</dd></div>
+          <div><dt>Role</dt><dd>Admin</dd></div>
+          <div><dt>Last login</dt><dd>21 Oct 2026, 08:45</dd></div>
+        </dl>
+
+        <p class="fine">To change your name or email, contact the system owner.</p>
+      </section>
+
+      <!-- Password -->
+      <section class="card">
+        <h2>Password</h2>
+        <p class="card-sub">Change your password to keep the dashboard secure.</p>
+        <div class="pw-row">
+          <span>Keep it private and do not share it.</span>
+          <button type="button" class="btn-solid" id="openPassword">Change Password</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- ===== Change Password popup ===== -->
+<div class="overlay" id="pwModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pwTitle">
+    <h2 id="pwTitle">Change Password</h2>
+    <p class="modal-text">Use a password you do not use anywhere else.</p>
+
+    <div class="modal-field">
+      <label class="modal-label" for="curPw">Current Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="curPw" autocomplete="current-password">
+        <button type="button" class="eye" data-for="curPw" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+      </div>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="newPw">New Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="newPw" autocomplete="new-password">
+        <button type="button" class="eye" data-for="newPw" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <div class="meter" id="meter"><span id="meterBar"></span></div>
+      <p class="meter-label" id="meterLabel" hidden></p>
+      <ul class="rules" id="rules">
+        <li data-rule="len"><i class="fa-solid fa-check"></i> At least 8 characters</li>
+        <li data-rule="mix"><i class="fa-solid fa-check"></i> Includes uppercase &amp; number</li>
+        <li data-rule="sym"><i class="fa-solid fa-check"></i> One special character</li>
+      </ul>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="confPw">Confirm New Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="confPw" autocomplete="new-password">
+        <button type="button" class="eye" data-for="confPw" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <p class="match" id="matchMsg" hidden></p>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="btn-outline" id="pwCancel" type="button">Cancel</button>
+      <button class="btn-solid" id="pwSave" type="button" disabled>Update Password</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Password Updated popup ===== -->
+<div class="overlay" id="doneModal">
+  <div class="modal modal--done" role="dialog" aria-modal="true" aria-labelledby="doneTitle">
+    <span class="done-icon"><i class="fa-solid fa-check"></i></span>
+    <h2 id="doneTitle">Password Updated</h2>
+    <p class="done-text">Your password has been changed. Use it the next time you log in.</p>
+    <hr>
+    <h3>What happens next?</h3>
+    <ul>
+      <li>You stay logged in on this device.</li>
+      <li>Other devices will ask for the new password.</li>
+      <li>This change is saved in the activity history.</li>
+    </ul>
+    <button class="btn-solid btn-wide" id="doneContinue" type="button">Continue</button>
+  </div>
+</div>
+
+<script src="Settings.js"></script>
+<script src="Logout.js"></script>
+</body>
+</html>

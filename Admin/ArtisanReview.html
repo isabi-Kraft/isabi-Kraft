@@ -6,8 +6,9 @@
 <title>Review Artisan | iSabiKraft Admin</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- styles.css = sidebar, top bar and shared look. review.css = only this page. -->
+
 <link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="LogoutModal.css">
 <link rel="stylesheet" href="ArtisanReview.css">
 <link rel="stylesheet" href="ReviewFlows.css">
 </head>
@@ -15,29 +16,27 @@
 
 <div class="app">
 
-  <!-- ===== LEFT SIDEBAR (same as the queue page) ===== -->
+
   <aside class="sidebar">
     <div class="brand">
       <img src="Images/ISabi Logo.png">
     </div>
     <nav class="nav">
-      <a href="#"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
-      <a href="VerificationQueue.html" class="active"><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
-      <a href="#"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
-      <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
-      <a href="#"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
-      <a href="#"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
-      <a href="#"><i class="fa-solid fa-chart-bar"></i><span>Reports</span></a>
-      <a href="#"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
-      <a href="#"><i class="fa-solid fa-user-gear"></i><span>User Management</span></a>
-      <a href="#"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
-    </nav>
-    <a href="#" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+        <a href="AdminDashboard.html" ><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+        <a href="VerificationQueue.html" class="active"><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
+        <a href="Artisans.html"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+        <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+        <a href="Alljobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+        <a href="Disputes.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+        <a href="CategoryManagement.html"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+        <a href="Settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+    <a href="LoggedOut.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
   </aside>
 
   <div class="main">
 
-    <!-- ===== TOP BAR with breadcrumb ===== -->
+    
     <header class="topbar">
       <span class="topbar-title"><a href="VerificationQueue.html" class="crumb">Verification Queue</a> <i class="fa-solid fa-chevron-right small"></i> Review</span>
       <div class="topbar-right">
@@ -52,14 +51,14 @@
 
     <main class="content">
 
-      <!-- Back link + automatic check result -->
+     
       <div class="top-row">
         <a href="VerificationQueue.html" class="back"><i class="fa-solid fa-arrow-left"></i> Back to verification Queue</a>
         <p class="notice"><i class="fa-solid fa-check"></i> No flags. NIN and selfie match, phone and email verified, portfolio meets the 3-photo minimum.</p>
       </div>
 
 
-      <!-- Two columns: details on the left, decisions on the right -->
+      
       <div class="review-grid">
 
         <!-- ========== LEFT COLUMN ========== -->
@@ -76,7 +75,7 @@
             </div>
           </section>
 
-          <!-- Applicant details: one row per detail -->
+          <!-- Applicant details-->
           <section class="card">
             <h3>Applicant details</h3>
             <div class="detail"><span>Full Name</span><strong>Tunde Adeyemi</strong></div>
@@ -166,7 +165,6 @@
             </div>
           </section>
 
-          <!-- Important note -->
           <section class="important">
             <strong><i class="fa-solid fa-shield-halved"></i> Important</strong>
             <p>All documents are securely stored and will only be used for verification purposes. Once approved, the artisan will be notified and can start receiving job assignments.</p>
@@ -187,7 +185,7 @@
   </div>
 </div>
 
-<!-- ===== POPUP 1: "Are you sure?" ===== -->
+
 <div class="overlay" id="confirmModal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
     <button class="modal-close" id="confirmClose" aria-label="Close">&times;</button>
@@ -207,7 +205,7 @@
   </div>
 </div>
 
-<!-- ===== POPUP 2: success ===== -->
+
 <div class="overlay" id="successModal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
     <button class="modal-close" id="successClose" aria-label="Close">&times;</button>
@@ -225,7 +223,7 @@
   </div>
 </div>
 
-<!-- ===== REJECT POPUP 1: reason + note ===== -->
+
 <div class="overlay" id="rejectModal">
   <div class="modal modal--form" role="dialog" aria-modal="true" aria-labelledby="rejectTitle">
     <button class="modal-close" id="rejectClose" type="button" aria-label="Close">&times;</button>
@@ -257,7 +255,6 @@
   </div>
 </div>
 
-<!-- ===== REJECT POPUP 2: success ===== -->
 <div class="overlay" id="rejectDoneModal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="rejectDoneTitle">
     <div class="modal-icon bad"><i class="fa-solid fa-xmark"></i></div>
@@ -274,7 +271,7 @@
   </div>
 </div>
 
-<!-- ===== REQUEST INFORMATION POPUP 1: what is missing ===== -->
+
 <div class="overlay" id="infoModal">
   <div class="modal modal--form" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <button class="modal-close" id="infoClose" type="button" aria-label="Close">&times;</button>
@@ -303,7 +300,6 @@
   </div>
 </div>
 
-<!-- ===== REQUEST INFORMATION POPUP 2: success ===== -->
 <div class="overlay" id="infoDoneModal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="infoDoneTitle">
     <div class="modal-icon warn"><i class="fa-regular fa-pen-to-square"></i></div>
@@ -321,6 +317,7 @@
 </div>
 
 <script src="ArtisanReview.js"></script>
+<script src="Logout.js"></script>
 <script src="ReviewFlows.js"></script>
 </body>
 </html>

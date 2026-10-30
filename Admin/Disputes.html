@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disputes | iSabiKraft Admin</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="VerificationQueue.css">
+<link rel="stylesheet" href="LogoutModal.css">
+<link rel="stylesheet" href="Disputes.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR  -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Images/ISabi Logo.png" alt="ISabiKraft Logo" class="brand-img">
+    </div>
+    <nav class="nav">
+      <a href="AdminDashboard.html" ><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+      <a href="VerificationQueue.html" ><i class="fa-solid fa-shield-halved"></i><span>Verification Queue</span></a>
+      <a href="Artisans.html"><i class="fa-solid fa-users"></i><span>Artisans</span></a>
+      <a href="#"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+      <a href="Alljobs.html"><i class="fa-solid fa-briefcase"></i><span>All Jobs</span></a>
+      <a href="Disputes.html" class="active"><i class="fa-solid fa-triangle-exclamation"></i><span>Disputes</span></a>
+      <a href="CategoryManagement.html"><i class="fa-solid fa-layer-group"></i><span>Category Management</span></a>
+      <a href="Settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+    </nav>
+
+    <a href="#" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Admin Logout</span></a>
+  </aside>
+
+  <!-- ===== RIGHT SIDE ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="topbar-title">Disputes</span>
+      <div class="topbar-right">
+        <i class="fa-regular fa-bell"></i>
+        <div class="profile">
+          <span class="profile-pic"><i class="fa-solid fa-user"></i></span>
+          <div class="profile-text"><strong>Chidinma</strong><small>Admin</small></div>
+          <i class="fa-solid fa-chevron-down small"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="content disputes-page">
+      <h1>Disputes</h1>
+      <p class="intro">Review complaints, record what you did, and close each with a resolution note.</p>
+
+      <!-- Four summary cards  -->
+      <section class="d-stats">
+        <div class="d-stat highlight">
+          <p class="d-title"><span class="badge orange"><i class="fa-solid fa-triangle-exclamation"></i></span> Open Disputes</p>
+          <p class="d-number">3</p>
+          <p class="trend warn"><i class="fa-solid fa-arrow-up"></i> +1%</p>
+          <p class="stat-note">vs, last 7 days</p>
+        </div>
+        <div class="d-stat">
+          <p class="d-title"><span class="badge slate"><i class="fa-solid fa-clock-rotate-left"></i></span> Under Review</p>
+          <p class="d-number">2</p>
+          <p class="trend up"><i class="fa-solid fa-arrow-down"></i> -1%</p>
+          <p class="stat-note">vs, last 7 days</p>
+        </div>
+        <div class="d-stat">
+          <p class="d-title"><span class="badge green"><i class="fa-solid fa-circle-check"></i></span> Resolved</p>
+          <p class="d-number">2</p>
+          <p class="trend up"><i class="fa-solid fa-arrow-up"></i> +8%</p>
+          <p class="stat-note">vs, last 7 days</p>
+        </div>
+        <div class="d-stat">
+          <p class="d-title"><span class="badge orange"><i class="fa-solid fa-triangle-exclamation"></i></span> All Disputes</p>
+          <p class="d-number">7</p>
+          <p class="trend warn"><i class="fa-solid fa-arrow-up"></i> +1%</p>
+          <p class="stat-note">vs, last 7 days</p>
+        </div>
+      </section>
+
+      <!-- Search, filters and the table -->
+      <section class="panel">
+
+        <div class="toolbar">
+          <label class="d-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="disputeSearch" placeholder="Search by dispute ID, job, customer or artisan" aria-label="Search disputes">
+          </label>
+
+          <div class="chips" id="disputeFilters" role="group" aria-label="Filter disputes">
+            <button type="button" class="chip active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-filter="open" aria-pressed="false">Open</button>
+            <button type="button" class="chip" data-filter="review" aria-pressed="false">In Review</button>
+            <button type="button" class="chip" data-filter="resolved" aria-pressed="false">Resolved</button>
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table id="disputesTable">
+            <thead>
+              <tr>
+                <th>Dispute ID</th>
+                <th>Job ID</th>
+                <th>Customer</th>
+                <th>Artisan</th>
+                <th>Issue</th>
+                <th>Raised</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+              <tr data-status="open">
+                <td class="d-id">DSP-0007</td>
+                <td class="job-ref">JK-00124</td>
+                <td><span class="who"><span class="avatar c1"><img src="Images/okafor2.png"></span>Okafor Chidinma</span></td>
+                <td><span class="who"><span class="avatar c2"><img src="Images/Tunde.png"></span>Tunde Adeyemi</span></td>
+                <td class="issue">Work left incomplete</td>
+                <td class="raised"><span>Oct 20, 2026</span><span>11:20 AM</span></td>
+                <td><span class="pill open">Open</span></td>
+                <td><a href="DisputeDetail.html" class="view-btn">View Details</a></td>
+              </tr>
+              <tr data-status="open">
+                <td class="d-id">DSP-0006</td>
+                <td class="job-ref">JK-00125</td>
+                <td><span class="who"><span class="avatar c4"><img src="Images/Aisha.png"></span>Aisha Bello</span></td>
+                <td><span class="who"><span class="avatar c3"><img src="Images/Paul.png"></span>Ayinde Paul</span></td>
+                <td class="issue">Artisan did not show up</td>
+                <td class="raised"><span>Oct 18, 2026</span><span>12:20 PM</span></td>
+                <td><span class="pill open">Open</span></td>
+                <td><a href="#" class="view-btn">View Details</a></td>
+              </tr>
+              <tr data-status="open">
+                <td class="d-id">DSP-0005</td>
+                <td class="job-ref">JK-00126</td>
+                <td><span class="who"><span class="avatar c5"><img src="Images/Babatunde.png"></span>Babatunde Lawal</span></td>
+                <td><span class="who"><span class="avatar c2"><img src="Images/okafor.png"></span>Bright Okafor</span></td>
+                <td class="issue">Work left incomplete</td>
+                <td class="raised"><span>Oct 15, 2026</span><span>04:20 PM</span></td>
+                <td><span class="pill open">Open</span></td>
+                <td><a href="#" class="view-btn">View Details</a></td>
+              </tr>
+              <tr data-status="review">
+                <td class="d-id">DSP-0004</td>
+                <td class="job-ref">JK-00127</td>
+                <td><span class="who"><span class="avatar c1"><img src="Images/Mary.png"></span>Mary Johnson</span></td>
+                <td><span class="who"><span class="avatar c4"><img src="Images/williams.png"></span>George Williams</span></td>
+                <td class="issue">Poor quality of work</td>
+                <td class="raised"><span>Oct 15, 2026</span><span>08:01 PM</span></td>
+                <td><span class="pill review">In Review</span></td>
+                <td><a href="#" class="view-btn">View Details</a></td>
+              </tr>
+              <tr data-status="review">
+                <td class="d-id">DSP-0003</td>
+                <td class="job-ref">JK-00128</td>
+                <td><span class="who"><span class="avatar c3"><img src="Images/Nelson.png"></span>Nelson Wisdom</span></td>
+                <td><span class="who"><span class="avatar c5"><img src="Images/ike.png"></span>Davide Ike</span></td>
+                <td class="issue">Late completion</td>
+                <td class="raised"><span>Oct 12, 2026</span><span>05:00 AM</span></td>
+                <td><span class="pill review">In Review</span></td>
+                <td><a href="#" class="view-btn">View Details</a></td>
+              </tr>
+              <tr data-status="resolved">
+                <td class="d-id">DSP-0002</td>
+                <td class="job-ref">JK-00129</td>
+                <td><span class="who"><span class="avatar c1"><img src="Images/okafor2.png"></span>Okafor Chidinma</span></td>
+                <td><span class="who"><span class="avatar c2"><img src="Images/Tunde.png"></span>Tunde Adeyemi</span></td>
+                <td class="issue">Work left incomplete</td>
+                <td class="raised"><span>Oct 07, 2026</span><span>11:20 AM</span></td>
+                <td><span class="pill resolved">Resolved</span></td>
+                <td><a href="#" class="view-btn">View Details</a></td>
+              </tr>
+              <tr data-status="resolved">
+                <td class="d-id">DSP-0001</td>
+                <td class="job-ref">JK-00130</td>
+                <td><span class="who"><span class="avatar c1"><img src="Images/okafor2.png"></span>Okafor Chidinma</span></td>
+                <td><span class="who"><span class="avatar c2"><img src="Images/Tunde.png"></span>Tunde Adeyemi</span></td>
+                <td class="issue">Work left incomplete</td>
+                <td class="raised"><span>Oct 6, 2026</span><span>12:05 PM</span></td>
+                <td><span class="pill resolved">Resolved</span></td>
+                <td><a href="#" class="view-btn">View Details</a></td>
+              </tr>
+              <tr class="empty-row" id="emptyRow" hidden>
+                <td colspan="8">No disputes match your search or filter.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="Disputes.js"></script>
+<script src="Logout.js"></script>
+</body>
+</html>
